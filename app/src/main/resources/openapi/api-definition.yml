@@ -1,0 +1,27 @@
+openapi: 3.0.3
+
+info:
+  title: UVIS Backend Service
+  version: 1.0.0
+
+servers:
+- url: http://localhost:8080
+
+tags:
+- name: Version
+  description: API for Version
+
+components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+- BearerAuth: []
+
+paths:
+  /api/version:
+    $ref: './paths/version.yml#/versionPath'
+  /api/v1/vehicles:
+    $ref: './paths/vehicle.yml#/vehicles'

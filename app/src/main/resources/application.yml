@@ -1,0 +1,73 @@
+server:
+    port: 8080
+
+logging:
+    level:
+        root: ${LOG_LEVEL_ROOT:INFO}
+        org.springframework:
+            web: ${LOG_LEVEL_SPRING:INFO}
+            transaction: DEBUG
+        com.uvis.auth: ${LOG_LEVEL_AUTH:INFO}
+        com.sorim.uvis: ${LOG_LEVEL_UVIS:DEBUG}
+        com.zaxxer.hikari: TRACE
+        org.postgresql: DEBUG
+spring:
+    jpa:
+        show-sql: true
+        properties.hibernate:
+            format_sql: true
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    datasource:
+        url: ${CI_DB_URL}
+        username: ${CI_DB_USER}
+        password: ${CI_DB_PASSWORD}
+        driver-class-name: org.postgresql.Driver
+        hikari:
+            connection-test-query: SELECT 1
+            transaction-isolation: TRANSACTION_READ_COMMITTED
+            maximum-pool-size: 100
+            minimum-idle: 15
+            leak-detection-threshold: 90000
+            pool-name: UvisHikariPool
+            connection-timeout: 120000
+management:
+    info:
+        defaults:
+            enabled: true
+    health:
+        livenessState:
+            enabled: true
+        readinessState:
+            enabled: true
+        diskspace:
+            enabled: false
+        db:
+            enabled: true
+        refresh:
+            enabled: false
+        ping:
+            enabled: false
+    endpoints:
+        web:
+            exposure:
+                include: info,health,prometheus,flyway
+            discovery:
+                enabled: false
+    endpoint:
+        health:
+            show-components: always
+            probes:
+                enabled: true
+        ping:
+            enabled: false
+        diskSpace:
+            enabled: false
+        discoveryComposite:
+            enabled: false
+
+ci:
+    service-name: UVIS.Service
+    environment: ${CI_ENVIRONMENT:LOCAL}
+    version: ${CI_VERSION:1.0.0}
+    build-number: ${CI_BUILD_NUMBER:0}

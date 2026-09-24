@@ -1,0 +1,129 @@
+VehicleRequest:
+  type: object
+
+  required:
+    - vin
+    - registrationNo
+    - make
+    - model
+    - manufactureYear
+
+  properties:
+
+    vin:
+      type: string
+      minLength: 17
+      maxLength: 17
+      example: MA3EJKD1S00100001
+
+    registrationNo:
+      type: string
+      maxLength: 20
+      example: TN01AB1001
+
+    make:
+      type: string
+      maxLength: 50
+      example: Toyota
+
+    model:
+      type: string
+      maxLength: 50
+      example: Innova Crysta
+
+    variant:
+      type: string
+      maxLength: 50
+      example: GX
+
+    manufactureYear:
+      type: integer
+      minimum: 1990
+      example: 2021
+
+    fuelType:
+      type: string
+      enum:
+        - Petrol
+        - Diesel
+        - Hybrid
+        - Electric
+
+    transmissionType:
+      type: string
+      enum:
+        - Manual
+        - Automatic
+
+    mileageKm:
+      type: integer
+      minimum: 0
+      example: 25000
+
+    color:
+      type: string
+      maxLength: 30
+      example: White
+
+    ownerName:
+      type: string
+      maxLength: 100
+      example: Ravi Kumar
+
+VehicleResponse:
+  type: object
+
+  properties:
+
+    vehicleId:
+      type: integer
+      format: int64
+      example: 1
+
+    vin:
+      type: string
+      example: MA3EJKD1S00100001
+
+    registrationNo:
+      type: string
+      example: TN01AB1001
+
+    make:
+      type: string
+      example: Toyota
+
+    model:
+      type: string
+      example: Innova Crysta
+
+    variant:
+      type: string
+      example: GX
+
+    manufactureYear:
+      type: integer
+      example: 2021
+
+    fuelType:
+      type: string
+      example: Diesel
+
+    transmissionType:
+      type: string
+      example: Automatic
+
+    mileageKm:
+      type: integer
+      example: 25000
+
+    color:
+      type: string
+      example: White
+
+    ownerName:
+      type: string
+      example: Ravi Kumar
+
+    createdAt:
+      type: string
+      format: date-time

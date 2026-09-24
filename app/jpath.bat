@@ -1,0 +1,1 @@
+path=%path%;D:\apache-maven-3.9.16\bin

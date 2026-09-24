@@ -1,0 +1,21 @@
+versionPath:
+  get:
+    tags:
+      - Version
+    operationId: getVersion
+    summary: Get application version
+    responses:
+      '200':
+        description: Version information
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/version-schema.yml#/VersionResponse'
+  head:
+    tags:
+      - Version
+    operationId: getHeadVersion
+    summary: Get application version
+    responses:
+      '200':
+        description: Version API available

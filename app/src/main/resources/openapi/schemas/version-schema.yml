@@ -1,0 +1,20 @@
+VersionResponse:
+  description: Version environment model
+  type: object
+  properties:
+    serviceName:
+      description: Service name
+      type: string
+    version:
+      description: Service version / API version
+      type: string
+    environmentName:
+      description: Environment name
+      type: string
+    buildNumber:
+      description: Build number
+      type: string
+    fullString:
+      description: "{ServiceName} v{Version}.{BuildNumber}-{EnvironmentName}"
+      type: string
+      readOnly: true

@@ -1,0 +1,47 @@
+vehicles:
+  get:
+    tags:
+      - Vehicle
+    summary: List Vehicles
+    operationId: getVehicles
+
+    parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 0
+
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 20
+
+    responses:
+      '200':
+        description: Vehicle list retrieved successfully
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../schemas/vehicle-schema.yml#/VehicleResponse'
+
+  post:
+    tags:
+      - Vehicle
+    summary: Create Vehicle
+    operationId: createVehicle
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/vehicle-schema.yml#/VehicleRequest'
+
+    responses:
+      '201':
+        description: Vehicle created successfully
+
