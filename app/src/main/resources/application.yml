@@ -1,5 +1,5 @@
 server:
-    port: 8080
+    port: 8081
 
 logging:
     level:
@@ -65,6 +65,15 @@ management:
             enabled: false
         discoveryComposite:
             enabled: false
+
+springdoc:
+    api-docs:
+        enabled: true
+        path: /api-docs
+    swagger-ui:
+        enabled: true
+        path: /swagger-ui.html
+    show-actuator: false
 
 ci:
     service-name: UVIS.Service

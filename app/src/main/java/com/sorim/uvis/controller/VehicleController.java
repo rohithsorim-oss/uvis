@@ -34,6 +34,11 @@ public class VehicleController implements VehicleApi {
     public ResponseEntity<ApiResponse<PageResponse<VehicleResponse>>> getVehicles(String search, VehicleStatus status, Long categoryId,
                                                                 Integer minYear, Integer maxYear, String sortBy,
                                                                 String sortDir, Integer page, Integer size) {
+        page = page != null ? page : 0;
+        size = size != null ? size : 20;
+        sortBy = sortBy != null ? sortBy : "createdAt";
+        sortDir = sortDir != null ? sortDir : "desc";
+        
         Pageable pageable = PageRequest.of(page, size);
         PageResponse<VehicleResponse> response = vehicleService.getAllVehicles(
                 search, status, categoryId, minYear, maxYear, sortBy, sortDir, pageable);
